@@ -10,6 +10,7 @@
 #import "MovieTableViewCell.h"
 #import "MovieDetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "SVProgressHUD.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -39,6 +40,7 @@
 }
 
 -(void) fetchMovies {
+    [SVProgressHUD show];
 
     NSString *urlString = @"https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json";
 
@@ -62,6 +64,7 @@
                                                                                       error:&jsonError];
                                                     self.movies = responseDictionary[@"movies"];
                                                     [self.tableView reloadData];
+                                                    [SVProgressHUD dismiss];
                                                     NSLog(@"Response: %@", self.movies);
                                                 } else {
                                                     NSLog(@"An error occurred: %@", error.description);
