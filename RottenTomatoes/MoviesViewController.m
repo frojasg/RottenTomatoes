@@ -8,6 +8,7 @@
 
 #import "MoviesViewController.h"
 #import "MovieTableViewCell.h"
+#import "MovieDetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -22,7 +23,10 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+
+    self.title = @"Movies";
     [self fetchMovies];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,10 +81,36 @@
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"synopsis"];
 
-    NSURL *imageUrl = [[NSURL alloc] initWithString: movie[@"posters"][@"thumbnail"]];
+
+    NSString *originalUrlString = movie[@"posters"][@"thumbnail"];
+
+    NSRange range = [originalUrlString rangeOfString:@".*cloudfront.net/"
+                                             options:NSRegularExpressionSearch];
+
+    NSString *newUrlString = [originalUrlString stringByReplacingCharactersInRange:range
+                                                                        withString:@"https://content6.flixster.com/"];
+
+    range = [newUrlString rangeOfString:@"_ori.jpg$"
+                                     options:NSRegularExpressionSearch];
+
+    newUrlString = [newUrlString stringByReplacingCharactersInRange:range
+                                                              withString:@"_tmb.jpg"];
+
+
+
+    NSLog(@"%@", newUrlString);
+    NSURL *imageUrl = [[NSURL alloc] initWithString: newUrlString];
+
     [cell.posterView setImageWithURL:imageUrl];
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    MovieDetailsViewController *vc = [[MovieDetailsViewController alloc] init];
+    vc.movie = self.movies[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
