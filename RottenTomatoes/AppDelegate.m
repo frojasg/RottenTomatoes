@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MoviesViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,28 @@
     // Disable caching, so that we can demonstrate features related to making actual requests.
     NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0 diskCapacity:0 diskPath:nil];
     [NSURLCache setSharedURLCache:sharedCache];
+
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+
+    self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
+    self.window.rootViewController = tabBarController;
+    [self.window makeKeyAndVisible];
+
+    MoviesViewController *movies = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"movieViewController"];
+
+    movies.tabBarItem.title = @"Movies";
+    movies.title = @"Movies";
+    movies.endpoint = @"https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json";
+    UINavigationController *nmovies = [[UINavigationController alloc] initWithRootViewController:movies];
+
+    MoviesViewController *dvd = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"movieViewController"];
+    dvd.tabBarItem.title = @"DVD";
+    dvd.endpoint = @"https://gist.githubusercontent.com/timothy1ee/e41513a57049e21bc6cf/raw/b490e79be2d21818f28614ec933d5d8f467f0a66/gistfile1.json";
+
+    dvd.title = @"DVD";
+    UINavigationController *ndvd = [[UINavigationController alloc] initWithRootViewController:dvd];
+
+    tabBarController.viewControllers = @[nmovies, ndvd];
     return YES;
 }
 

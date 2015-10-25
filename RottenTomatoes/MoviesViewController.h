@@ -10,6 +10,7 @@
 
 @interface MoviesViewController : UIViewController
 
+@property(strong, nonatomic) NSString *endpoint;
 
 @end
 

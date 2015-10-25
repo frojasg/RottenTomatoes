@@ -29,7 +29,6 @@
     self.tableView.delegate = self;
 
     [self hiddeErrorView];
-    self.title = @"Movies";
 
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.tintColor = [UIColor whiteColor];
@@ -58,10 +57,7 @@
 }
 
 -(void) fetchMovies {
-
-    NSString *urlString = @"https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json";
-
-    NSURL *url = [NSURL URLWithString:urlString];
+    NSURL *url = [NSURL URLWithString:self.endpoint];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
 
     NSURLSession *session =
