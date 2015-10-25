@@ -51,7 +51,7 @@
 
     dvd.endpoint = @"https://gist.githubusercontent.com/timothy1ee/e41513a57049e21bc6cf/raw/b490e79be2d21818f28614ec933d5d8f467f0a66/gistfile1.json";
 
-    dvd.title = @"DVD";
+    dvd.title = @"DVDs";
     UINavigationController *ndvd = [[UINavigationController alloc] initWithRootViewController:dvd];
 
     tabBarController.viewControllers = @[nmovies, ndvd];
