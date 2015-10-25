@@ -11,6 +11,10 @@
 		BF5B527F1BDB5F6D002322F8 /* MovieDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5B527D1BDB5F6D002322F8 /* MovieDetailsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		BF5B52801BDB5F6D002322F8 /* MovieDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF5B527E1BDB5F6D002322F8 /* MovieDetailsViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		BFAFFB1C1BDC93D000D1A9F6 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAFFB1B1BDC93D000D1A9F6 /* Movie.m */; settings = {ASSET_TAGS = (); }; };
+		BFAFFB281BDD449700D1A9F6 /* iconmonstr-video-5-icon-32.png in Resources */ = {isa = PBXBuildFile; fileRef = BFAFFB261BDD449700D1A9F6 /* iconmonstr-video-5-icon-32.png */; settings = {ASSET_TAGS = (); }; };
+		BFAFFB291BDD449700D1A9F6 /* iconmonstr-video-5-icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = BFAFFB271BDD449700D1A9F6 /* iconmonstr-video-5-icon-48.png */; settings = {ASSET_TAGS = (); }; };
+		BFAFFB2D1BDD45E200D1A9F6 /* iconmonstr-disc-2-icon-32.png in Resources */ = {isa = PBXBuildFile; fileRef = BFAFFB2C1BDD45E200D1A9F6 /* iconmonstr-disc-2-icon-32.png */; settings = {ASSET_TAGS = (); }; };
+		BFAFFB2F1BDD46E100D1A9F6 /* iconmonstr-disc-2-icon-64.png in Resources */ = {isa = PBXBuildFile; fileRef = BFAFFB2E1BDD46E100D1A9F6 /* iconmonstr-disc-2-icon-64.png */; settings = {ASSET_TAGS = (); }; };
 		BFC5245F1BD6F288009445A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC5245E1BD6F288009445A9 /* main.m */; };
 		BFC524621BD6F288009445A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC524611BD6F288009445A9 /* AppDelegate.m */; };
 		BFC524651BD6F288009445A9 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC524641BD6F288009445A9 /* MoviesViewController.m */; };
@@ -29,6 +33,10 @@
 		BF5B527E1BDB5F6D002322F8 /* MovieDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetailsViewController.xib; sourceTree = "<group>"; };
 		BFAFFB1A1BDC93D000D1A9F6 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		BFAFFB1B1BDC93D000D1A9F6 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		BFAFFB261BDD449700D1A9F6 /* iconmonstr-video-5-icon-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconmonstr-video-5-icon-32.png"; path = "Assets/iconmonstr-video-5-icon-32.png"; sourceTree = "<group>"; };
+		BFAFFB271BDD449700D1A9F6 /* iconmonstr-video-5-icon-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconmonstr-video-5-icon-48.png"; path = "Assets/iconmonstr-video-5-icon-48.png"; sourceTree = "<group>"; };
+		BFAFFB2C1BDD45E200D1A9F6 /* iconmonstr-disc-2-icon-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconmonstr-disc-2-icon-32.png"; path = "Assets/iconmonstr-disc-2-icon-32.png"; sourceTree = "<group>"; };
+		BFAFFB2E1BDD46E100D1A9F6 /* iconmonstr-disc-2-icon-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconmonstr-disc-2-icon-64.png"; path = "Assets/iconmonstr-disc-2-icon-64.png"; sourceTree = "<group>"; };
 		BFC5245A1BD6F288009445A9 /* RottenTomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RottenTomatoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC5245E1BD6F288009445A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BFC524601BD6F288009445A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,9 +71,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BFAFFB231BDD43A500D1A9F6 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				BFAFFB2E1BDD46E100D1A9F6 /* iconmonstr-disc-2-icon-64.png */,
+				BFAFFB2C1BDD45E200D1A9F6 /* iconmonstr-disc-2-icon-32.png */,
+				BFAFFB261BDD449700D1A9F6 /* iconmonstr-video-5-icon-32.png */,
+				BFAFFB271BDD449700D1A9F6 /* iconmonstr-video-5-icon-48.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		BFC524511BD6F288009445A9 = {
 			isa = PBXGroup;
 			children = (
+				BFAFFB231BDD43A500D1A9F6 /* Assets */,
 				BFC5245C1BD6F288009445A9 /* RottenTomatoes */,
 				BFC5245B1BD6F288009445A9 /* Products */,
 				BFF217B157F8BD9A225EDBCF /* Pods */,
@@ -181,8 +201,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFAFFB2F1BDD46E100D1A9F6 /* iconmonstr-disc-2-icon-64.png in Resources */,
+				BFAFFB281BDD449700D1A9F6 /* iconmonstr-video-5-icon-32.png in Resources */,
 				BF5B52801BDB5F6D002322F8 /* MovieDetailsViewController.xib in Resources */,
+				BFAFFB291BDD449700D1A9F6 /* iconmonstr-video-5-icon-48.png in Resources */,
 				BFC5246D1BD6F288009445A9 /* LaunchScreen.storyboard in Resources */,
+				BFAFFB2D1BDD45E200D1A9F6 /* iconmonstr-disc-2-icon-32.png in Resources */,
 				BFC5246A1BD6F288009445A9 /* Assets.xcassets in Resources */,
 				BFC524681BD6F288009445A9 /* Main.storyboard in Resources */,
 			);
