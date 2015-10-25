@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *errorView;
 @property (strong, nonatomic) NSArray *movies;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation MoviesViewController
@@ -29,8 +30,23 @@
     [self hiddeErrorView];
     self.title = @"Movies";
 
+    self.refreshControl = [[UIRefreshControl alloc] init];
+
+    [self.refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents: UIControlEventValueChanged];
+    //scrollView.insertSubview(refreshControl, atIndex: 0)
+    [self.tableView addSubview:self.refreshControl];
+
+    // movieTableView.backgroundColor = UIColor.blackColor()
+    self.tableView.backgroundColor = [UIColor blackColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+
+    [SVProgressHUD show];
     [self fetchMovies];
 
+}
+
+- (void) onRefresh:(UIRefreshControl *)refresh {
+    [self fetchMovies];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,7 +59,6 @@
 }
 
 -(void) fetchMovies {
-    [SVProgressHUD show];
 
     NSString *urlString = @"https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json";
 
@@ -67,13 +82,14 @@
                                                                                       error:&jsonError];
                                                     self.movies = responseDictionary[@"movies"];
                                                     [self.tableView reloadData];
-                                                    [SVProgressHUD dismiss];
                                                     NSLog(@"Response: %@", self.movies);
                                                 } else {
                                                     [self showErrorView];
-                                                    [SVProgressHUD dismiss];
                                                     NSLog(@"An error occurred: %@", error.description);
                                                 }
+                                                [SVProgressHUD dismiss];
+                                                [self.refreshControl endRefreshing];
+
                                             }];
     [task resume];
 }
@@ -91,19 +107,12 @@
 
 
     NSString *originalUrlString = movie[@"posters"][@"thumbnail"];
-
-    NSRange range = [originalUrlString rangeOfString:@".*cloudfront.net/"
-                                             options:NSRegularExpressionSearch];
-
+    NSRange range = [originalUrlString rangeOfString:@".*cloudfront.net/" options:NSRegularExpressionSearch];
     NSString *newUrlString = [originalUrlString stringByReplacingCharactersInRange:range
                                                                         withString:@"https://content6.flixster.com/"];
-
-    range = [newUrlString rangeOfString:@"_ori.jpg$"
-                                     options:NSRegularExpressionSearch];
-
+    range = [newUrlString rangeOfString:@"_ori.jpg$" options:NSRegularExpressionSearch];
     newUrlString = [newUrlString stringByReplacingCharactersInRange:range
                                                               withString:@"_tmb.jpg"];
-
 
 
     NSLog(@"%@", newUrlString);
@@ -125,6 +134,7 @@
     self.errorView.hidden = YES;
     self.errorView.frame = CGRectMake(0, 0, self.errorView.frame.size.width, self.errorView.frame.size.height );
 }
+
 -(void) showErrorView {
     [self.errorView layoutIfNeeded];
     [UIView animateWithDuration:0.5
