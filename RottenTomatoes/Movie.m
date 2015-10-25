@@ -21,15 +21,7 @@
 }
 
 -(NSURL*) thumbnailUrl {
-    NSString *originalUrlString = self.movie[@"posters"][@"thumbnail"];
-
-    NSRange range = [originalUrlString rangeOfString:@".*cloudfront.net/" options:NSRegularExpressionSearch];
-    NSString *newUrlString = [originalUrlString stringByReplacingCharactersInRange:range
-                                                                        withString:@"https://content6.flixster.com/"];
-    range = [newUrlString rangeOfString:@"_ori.jpg$" options:NSRegularExpressionSearch];
-    newUrlString = [newUrlString stringByReplacingCharactersInRange:range
-                                                         withString:@"_tmb.jpg"];
-    return [[NSURL alloc] initWithString: newUrlString];
+    return [[NSURL alloc] initWithString: self.movie[@"posters"][@"thumbnail"]];
 }
 -(NSURL*) posterUrl {
     NSString *originalUrlString = self.movie[@"posters"][@"detailed"];

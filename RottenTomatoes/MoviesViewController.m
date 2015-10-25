@@ -35,16 +35,13 @@
     self.refreshControl.tintColor = [UIColor whiteColor];
 
     [self.refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents: UIControlEventValueChanged];
-    //scrollView.insertSubview(refreshControl, atIndex: 0)
     [self.tableView addSubview:self.refreshControl];
 
-    // movieTableView.backgroundColor = UIColor.blackColor()
     self.tableView.backgroundColor = [UIColor blackColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 
     [SVProgressHUD show];
     [self fetchMovies];
-
 }
 
 - (void) onRefresh:(UIRefreshControl *)refresh {
