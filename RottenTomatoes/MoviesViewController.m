@@ -11,6 +11,7 @@
 #import "MovieDetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "SVProgressHUD.h"
+#import "Movie.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -31,6 +32,7 @@
     self.title = @"Movies";
 
     self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.tintColor = [UIColor whiteColor];
 
     [self.refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents: UIControlEventValueChanged];
     //scrollView.insertSubview(refreshControl, atIndex: 0)
@@ -101,22 +103,11 @@
     NSLog(@"%@", cellText);
 
     MovieTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"movieCell"];
-    NSDictionary *movie = self.movies[indexPath.row];
-    cell.titleLabel.text = movie[@"title"];
-    cell.synopsisLabel.text = movie[@"synopsis"];
+    Movie *movie = [[Movie alloc] initWithDict:self.movies[indexPath.row]];
+    cell.titleLabel.text = [movie title];
+    cell.synopsisLabel.text = [movie synopsis];
 
-
-    NSString *originalUrlString = movie[@"posters"][@"thumbnail"];
-    NSRange range = [originalUrlString rangeOfString:@".*cloudfront.net/" options:NSRegularExpressionSearch];
-    NSString *newUrlString = [originalUrlString stringByReplacingCharactersInRange:range
-                                                                        withString:@"https://content6.flixster.com/"];
-    range = [newUrlString rangeOfString:@"_ori.jpg$" options:NSRegularExpressionSearch];
-    newUrlString = [newUrlString stringByReplacingCharactersInRange:range
-                                                              withString:@"_tmb.jpg"];
-
-
-    NSLog(@"%@", newUrlString);
-    NSURL *imageUrl = [[NSURL alloc] initWithString: newUrlString];
+    NSURL *imageUrl = [movie thumbnailUrl];
 
     [cell.posterView setImageWithURL:imageUrl];
 
@@ -126,7 +117,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     MovieDetailsViewController *vc = [[MovieDetailsViewController alloc] init];
-    vc.movie = self.movies[indexPath.row];
+    vc.movie = [[Movie alloc] initWithDict: self.movies[indexPath.row]];
+
     [self.navigationController pushViewController:vc animated:YES];
 }
 

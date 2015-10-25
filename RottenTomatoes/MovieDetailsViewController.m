@@ -23,9 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.titleLabel.text = self.movie[@"title"];
-    self.synopsisLabel.text = self.movie[@"synopsis"];
-    self.title = self.movie[@"title"];
+    self.titleLabel.text = [self.movie title];
+    self.synopsisLabel.text = [self.movie synopsis];
+    self.title = [self.movie title];
     [self.synopsisLabel sizeToFit];
 
     CGRect newFrame = self.contentView.frame;
@@ -38,13 +38,8 @@
     newFrame.size.height = newFrame.size.height + self.synopsisLabel.frame.size.height + 200;
     [self.contentView setFrame:newFrame];
 
-    NSString *originalUrlString = self.movie[@"posters"][@"detailed"];
-    NSRange range = [originalUrlString rangeOfString:@".*cloudfront.net/"
-                                             options:NSRegularExpressionSearch];
-    NSString *newUrlString = [originalUrlString stringByReplacingCharactersInRange:range
-                                                                        withString:@"https://content6.flixster.com/"];
-    NSLog(@"%@", newUrlString);
-    NSURL *imageUrl = [[NSURL alloc] initWithString: newUrlString];
+    [self.posterView setImageWithURL: [self.movie thumbnailUrl]];
+    NSURL *imageUrl = [self.movie posterUrl];
     [self.posterView setImageWithURL:imageUrl];
 }
 
