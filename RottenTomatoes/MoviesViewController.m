@@ -14,6 +14,7 @@
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *errorView;
 @property (strong, nonatomic) NSArray *movies;
 @end
 
@@ -25,7 +26,9 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 
+    [self hiddeErrorView];
     self.title = @"Movies";
+
     [self fetchMovies];
 
 }
@@ -67,6 +70,8 @@
                                                     [SVProgressHUD dismiss];
                                                     NSLog(@"Response: %@", self.movies);
                                                 } else {
+                                                    [self showErrorView];
+                                                    [SVProgressHUD dismiss];
                                                     NSLog(@"An error occurred: %@", error.description);
                                                 }
                                             }];
@@ -116,5 +121,23 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void) hiddeErrorView {
+    self.errorView.hidden = YES;
+    self.errorView.frame = CGRectMake(0, 0, self.errorView.frame.size.width, self.errorView.frame.size.height );
+}
+-(void) showErrorView {
+    [self.errorView layoutIfNeeded];
+    [UIView animateWithDuration:0.5
+                          delay: 0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         self.errorView.hidden = NO;
+                         CGRect frame = [self.navigationController navigationBar].frame;
+                         self.errorView.frame = CGRectMake(0, frame.origin.y + frame.size.height, self.errorView.frame.size.width, self.errorView.frame.size.height );
 
+
+                         [self.errorView layoutIfNeeded];
+                     }
+                     completion: nil];
+}
 @end
