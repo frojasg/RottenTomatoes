@@ -85,6 +85,7 @@
                                                     self.movies = responseDictionary[@"movies"];
                                                     self.filteredMovies = [NSMutableArray arrayWithArray:self.movies];
                                                     [self.tableView reloadData];
+                                                    [self hiddeErrorView];
                                                     NSLog(@"Response: %@", self.movies);
                                                 } else {
                                                     [self showErrorView];
