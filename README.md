@@ -25,7 +25,7 @@ Time spent: `8.8h`
 - [x] Customize the navigation bar.
 
 ### Walkthrough
-![Video Walkthrough](http://i.imgur.com/9d4fXIm.gif)
+<img src='resources/walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 Credits
 ---------
