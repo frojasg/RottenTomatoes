@@ -119,6 +119,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.view endEditing:YES];
     MovieDetailsViewController *vc = [[MovieDetailsViewController alloc] init];
     vc.movie = [[Movie alloc] initWithDict: self.filteredMovies[indexPath.row]];
     MovieTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
