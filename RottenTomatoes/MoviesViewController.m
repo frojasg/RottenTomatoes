@@ -10,7 +10,7 @@
 #import "MovieTableViewCell.h"
 #import "MovieDetailsViewController.h"
 #import "UIImageView+FadeImage.h"
-#import "SVProgressHUD.h"
+#import "MBProgressHUD.h"
 #import "Movie.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
@@ -46,7 +46,7 @@
     self.tableView.backgroundColor = [UIColor blackColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
-    [SVProgressHUD show];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self fetchMovies];
 }
 
@@ -90,7 +90,7 @@
                                                     [self showErrorView];
                                                     NSLog(@"An error occurred: %@", error.description);
                                                 }
-                                                [SVProgressHUD dismiss];
+                                                [MBProgressHUD hideHUDForView:self.view animated:YES];
                                                 [self.refreshControl endRefreshing];
 
                                             }];

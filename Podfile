@@ -7,6 +7,7 @@ target 'RottenTomatoes' do
 
   pod 'AFNetworking'
   pod 'SVProgressHUD'
+  pod "MBProgressHUD"
   pod 'FontasticIcons'
 end
 
