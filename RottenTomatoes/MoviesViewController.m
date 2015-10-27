@@ -118,6 +118,9 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     MovieDetailsViewController *vc = [[MovieDetailsViewController alloc] init];
     vc.movie = [[Movie alloc] initWithDict: self.filteredMovies[indexPath.row]];
+    MovieTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+
+    vc.placeholderImage = cell.posterView.image;
 
     [self.navigationController pushViewController:vc animated:YES];
 }

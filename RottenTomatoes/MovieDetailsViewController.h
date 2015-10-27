@@ -12,5 +12,6 @@
 @interface MovieDetailsViewController : UIViewController
 
 @property (strong, nonatomic) Movie *movie;
+@property (strong, nonatomic) UIImage *placeholderImage;
 
 @end
