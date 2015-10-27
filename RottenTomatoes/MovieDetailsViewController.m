@@ -7,7 +7,7 @@
 //
 
 #import "MovieDetailsViewController.h"
-#import "UIImageView+AFNetworking.h"
+#import "UIImageView+FadeImage.h"
 
 @interface MovieDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -39,7 +39,7 @@
     [self.contentView setFrame:newFrame];
 
     NSURL *imageUrl = [self.movie posterUrl];
-    [self.posterView setImageWithURL:imageUrl placeholderImage:self.placeholderImage];
+    [self.posterView setFadeInImageWithURL:imageUrl placeholderImage:self.placeholderImage];
 }
 
 - (void)didReceiveMemoryWarning {

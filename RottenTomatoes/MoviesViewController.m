@@ -9,7 +9,7 @@
 #import "MoviesViewController.h"
 #import "MovieTableViewCell.h"
 #import "MovieDetailsViewController.h"
-#import "UIImageView+AFNetworking.h"
+#import "UIImageView+FadeImage.h"
 #import "SVProgressHUD.h"
 #import "Movie.h"
 
@@ -107,9 +107,10 @@
     cell.titleLabel.text = [movie title];
     cell.synopsisLabel.text = [movie synopsis];
 
+    cell.posterView.image = nil;
     NSURL *imageUrl = [movie thumbnailUrl];
 
-    [cell.posterView setImageWithURL:imageUrl];
+    [cell.posterView setFadeInImageWithURL:imageUrl];
 
     return cell;
 }
