@@ -24,6 +24,7 @@
     [NSURLCache setSharedURLCache:sharedCache];
 
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.tabBar.barStyle = UIBarStyleBlack;
 
     self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
     self.window.rootViewController = tabBarController;
@@ -32,7 +33,6 @@
     MoviesViewController *movies = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"movieViewController"];
 
     movies.tabBarItem.title = @"Movies";
-//    movies.tabBarItem.image = [UIImage imageNamed:@"iconmonstr-video-5-icon-32.png"];
     FIIcon *movieicon = [FIEntypoIcon videoIcon];
     UIImage *image = [movieicon imageWithBounds:CGRectMake(0, 0, 30, 30) color:[UIColor blackColor]];
     [movies.tabBarItem setImage:image];
@@ -40,11 +40,10 @@
     movies.title = @"Movies";
     movies.endpoint = @"https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json";
     UINavigationController *nmovies = [[UINavigationController alloc] initWithRootViewController:movies];
+    nmovies.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
     MoviesViewController *dvd = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"movieViewController"];
     dvd.tabBarItem.title = @"DVD";
-//    UIImage *img = [UIImage imageNamed:@"iconmonstr-disc-2-icon-32.png"];
-//    dvd.tabBarItem.image = img;
     FIIcon *cdicon = [FIEntypoIcon cdIcon];
     image = [cdicon imageWithBounds:CGRectMake(0, 0, 30, 30) color:[UIColor blackColor]];
     [dvd.tabBarItem setImage:image];
@@ -53,6 +52,7 @@
 
     dvd.title = @"DVDs";
     UINavigationController *ndvd = [[UINavigationController alloc] initWithRootViewController:dvd];
+    ndvd.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
     tabBarController.viewControllers = @[nmovies, ndvd];
     return YES;

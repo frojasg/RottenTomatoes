@@ -35,6 +35,7 @@
 
     self.moviesSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 44)];
     self.moviesSearchBar.delegate = self;
+    self.moviesSearchBar.barStyle = UIBarStyleBlack;
     self.tableView.tableHeaderView = self.moviesSearchBar;
 
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -43,7 +44,7 @@
     [self.tableView addSubview:self.refreshControl];
 
     self.tableView.backgroundColor = [UIColor blackColor];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
     [SVProgressHUD show];
     [self fetchMovies];

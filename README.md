@@ -2,7 +2,7 @@
 
 This is a movies app displaying box office and top rental DVDs using the [Rotten Tomatoes API](http://developer.rottentomatoes.com/docs/read/JSON).
 
-Time spent: `8.6h`
+Time spent: `8.8h`
 
 ### Features
 
@@ -22,7 +22,7 @@ Time spent: `8.6h`
 - [x] All images fade in.
 - [x] For the large poster, load the low-res image first, switch to high-res when complete.
 - [ ] Customize the highlight and selection effect of the cell.
-- [ ] Customize the navigation bar.
+- [x] Customize the navigation bar.
 
 ### Walkthrough
 ![Video Walkthrough](http://i.imgur.com/9d4fXIm.gif)
